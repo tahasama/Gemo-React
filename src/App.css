@@ -41,11 +41,24 @@
 .row2 {
   margin-left: 10px;
 }
+.timed {
+  font-weight: 300;
+  margin-left: 8px;
+  display: block;
+}
+
+.loading {
+  text-align: center;
+  font-size: 8vh;
+  font-weight: 300;
+}
+
+/* To add a little bit of responsiveness : */
 
 @media screen and (max-width: 720px) {
   .screen {
     max-width: 60vh;
-    padding: 42px;
+    padding: 50px;
   }
   .avatar {
     height: 17vh;
@@ -53,16 +66,16 @@
   }
   .infos {
     font-size: 12px;
-    max-width: 36vh;
+    max-width: 58vh;
     margin-top: -15px;
     position: absolute;
-    left: 25vh;
+    left: 26vh;
   }
   .bottom-infos {
     margin-right: 60px;
     position: relative;
     right: 8vh;
-    bottom: 7vh;
+    bottom: 14vh;
     display: flex;
     flex-direction: column;
   }
@@ -73,7 +86,7 @@
   }
   .boxed {
     position: relative;
-    width: 12vh;
+    width: 13vh;
     align-items: center;
     margin-top: 50px;
   }
