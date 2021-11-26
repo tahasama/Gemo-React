@@ -15,14 +15,27 @@ function App() {
   }, [page]);
 
   // get data from API and update rpository array
-  const getUsers = async () => {
-    const res = await axios
-      .get(
-        `https://api.github.com/search/repositories?q=created:2017-10-22&sort=stars&order=desc&page=${page}`
-      )
-      .then((res) => setRepos([...repos, ...res.data.items]))
-      .catch((err) => setmessage(true));
+  // const getUsers = async () => {
+  //   const res = await axios
+  //     .get(
+  //       `https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc&page=${page}`
+  //     )
+  //     .then((res) => setRepos([...repos, ...res.data.items]))
+  //     .catch((err) => setmessage(true));
 
+  //   setLoading(false);
+  // };
+
+  const getUsers = async () => {
+    const res = await axios.get(
+      `https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc&page=${page}`
+    );
+    const data = await res.data;
+    let arrRepos = [...repos, ...data.items];
+    let uniq = new Set(arrRepos.map((objRepo) => JSON.stringify(objRepo)));
+    arrRepos = Array.from(uniq).map((objRepo) => JSON.parse(objRepo));
+
+    setRepos(arrRepos);
     setLoading(false);
   };
 
